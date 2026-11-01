@@ -1,14 +1,14 @@
-Theater,Violation count,Total screenings,Violation rate (%)
-AMC Empire 25,28,431,6.5
-AMC 34th Street 14,16,236,6.78
-AMC Lincoln Square 13,16,326,4.91
-AMC Kips Bay 15,15,239,6.28
-AMC DINE-IN Staten Island 11,13,185,7.03
-AMC Bay Plaza Cinema 13,12,183,6.56
-AMC Bay Terrace 6,9,108,8.33
-AMC Fresh Meadows 7,8,110,7.27
-AMC Magic Johnson Harlem 9,8,134,5.97
-AMC 84th Street 6,7,99,7.07
-AMC Village 7,7,107,6.54
-AMC 19th St. East 6,4,100,4.0
-AMC Orpheum 7,4,47,8.51
+Theater,Violating film-theater pairs,Eligible film-theater pairs,Violation rate (% of eligible film-theater pairs)
+AMC Empire 25,28,35,80.0
+AMC 34th Street 14,16,17,94.12
+AMC Lincoln Square 13,16,16,100.0
+AMC Kips Bay 15,15,19,78.95
+AMC DINE-IN Staten Island 11,13,16,81.25
+AMC Bay Plaza Cinema 13,12,15,80.0
+AMC Bay Terrace 6,9,9,100.0
+AMC Fresh Meadows 7,8,9,88.89
+AMC Magic Johnson Harlem 9,8,10,80.0
+AMC 84th Street 6,7,7,100.0
+AMC Village 7,7,8,87.5
+AMC 19th St. East 6,4,4,100.0
+AMC Orpheum 7,4,4,100.0
