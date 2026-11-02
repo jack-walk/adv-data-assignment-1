@@ -139,6 +139,14 @@ def parse_time_minutes(t12: str) -> int:
     return t.hour * 60 + t.minute
 
 
+def parse_runtime_minutes(duration_text: str) -> int:
+    hours_match = re.search(r"(\d+)\s*HR", duration_text, flags=re.I)
+    mins_match = re.search(r"(\d+)\s*MIN", duration_text, flags=re.I)
+    hours = int(hours_match.group(1)) if hours_match else 0
+    mins = int(mins_match.group(1)) if mins_match else 0
+    return hours * 60 + mins
+
+
 def is_peak(day_name: str, t12: str) -> bool:
     mins = parse_time_minutes(t12)
     fri_start = 17 * 60 + 59
@@ -201,6 +209,8 @@ def parse() -> tuple[list[dict[str, str]], list[str]]:
 
             for idx, start_idx in enumerate(title_indexes):
                 film = re.sub(r"\s+", " ", lines[start_idx]).strip()
+                length = re.sub(r"\s+", " ", lines[start_idx + 1]).strip() if start_idx + 1 < len(lines) else ""
+                runtime_minutes = parse_runtime_minutes(length) if length else 0
                 end_idx = title_indexes[idx + 1] if idx + 1 < len(title_indexes) else parse_end
                 block = lines[start_idx:end_idx]
 
@@ -222,6 +232,8 @@ def parse() -> tuple[list[dict[str, str]], list[str]]:
                                 "Date": date_str,
                                 "Day of week": day_name,
                                 "Film": film,
+                                "Length": length,
+                                "Runtime minutes": str(runtime_minutes),
                                 "Showtime": fmt_time(tm),
                                 "Peak hours?": "Yes" if is_peak(day_name, tm) else "No",
                                 "Open captioned?": "Yes" if open_caption else "No",
@@ -255,6 +267,8 @@ def write_csv(rows: list[dict[str, str]]) -> None:
         "Date",
         "Day of week",
         "Film",
+        "Length",
+        "Runtime minutes",
         "Showtime",
         "Peak hours?",
         "Open captioned?",
